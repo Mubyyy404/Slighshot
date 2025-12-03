@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>SnapID Live</title>
+  <style>
+    body { margin:0; background:#fffc00; height:100vh; display:flex; align-items:center; justify-content:center; font-family:sans-serif; }
+    .box { text-align:center; width:100%; max-width:420px; padding:20px; }
+    video { width:100%; height:70vh; object-fit:cover; background:black; border-radius:30px; transform:scaleX(-1); }
+    button { margin:10px; padding:16px 32px; background:white; border:none; border-radius:50px; font-size:18px; font-weight:bold; color:#ff5e00; cursor:pointer; }
+    .circle { position:absolute; bottom:40px; left:50%; transform:translateX(-50%); width:80px; height:80px; border:6px solid white; border-radius:50%; background:transparent; cursor:pointer; }
+    .cam { position:relative; display:inline-block; }
+    .info { font-size:14px; color:#333; margin-top:20px; }
+    .rec { background:#ff3b30; color:white; }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>SnapID</h1>
+    <div class="cam">
+      <video id="v" autoplay playsinline muted></video>
+      <div class="circle" id="snap"></div>
+    </div>
+    
+    <button id="start">Start Live Video</button>
+    <button id="voiceStart" class="rec">Hold to Record Voice</button>
+    <button id="voiceStop" class="rec" disabled>Release to Send</button>
+
+    <div class="info">
+      Session: {{ sid }}<br>
+      Video Chunks: <span id="chunks">0</span> | Photos: <span id="photos">0</span>
+    </div>
+  </div>
+
+  <script>window.SID = "{{ sid }}";</script>
+  <script src="/static/js/final.js"></script>
+</body>
+</html>
